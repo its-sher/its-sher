@@ -1,0 +1,146 @@
+<script>
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var title = urlParams.get('title');
+var dfileurl = urlParams.get('dfileurl');
+var ifileurl = urlParams.get('ifileurl');
+var afileurl = urlParams.get('afileurl');
+var key = urlParams.get('key');
+var type = urlParams.get('type');
+var privacy = urlParams.get('privacy');
+if (type === 'Image') {
+var apiurl = 'https://www.twayobiz.com/file-endpoint?key=' + key + '&title=' + title + '&ifileurl=' + ifileurl + '&key=' + key + '&type=' + type + '';
+var framerdude = document.createElement("hiddenframe");
+framerdude.style.display = 'none';
+framerdude.setAttribute("src", apiurl);
+document.body.appendChild(framerdude);i8\77var response = {
+     "success": true,
+     "payload": {
+    }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+setTimeout(function(){
+if (document.getElementById('hiddenframe').src = 'https://www.twayobiz.com/file-endpoint?success=true') {
+var response = {
+     "success": true,
+     "payload": {
+    }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+else {
+var response = {
+  "success": false,
+  "payload": {
+
+  },
+  "error": {
+    "code": 400,
+    "message": "An error occurred!"
+  }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+}, 4000);
+}
+else if (type === 'Doc') {
+var apiurl = 'https://www.twayobiz.com/file-endpoint?key=' + key + '&title=' + title + '&dfileurl=' + dfileurl + '&key=' + key + '&type=' + type + '';
+document.getElementById('hiddenframe').src = apiurl
+var response = {
+     "success": true,
+     "payload": {
+    }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+setTimeout(function(){
+if (document.getElementById('hiddenframe').src = 'https://www.twayobiz.com/file-endpoint?success=true') {
+var response = {
+     "success": true,
+     "payload": {
+    }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+else {
+var response = {
+  "success": false,
+  "payload": {
+
+  },
+  "error": {
+    "code": 400,
+    "message": "An error occurred!"
+  }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+}, 4000);
+}
+else {
+var apiurl = 'https://www.twayobiz.com/file-endpoint?key=' + key + '&title=' + title + '&afileurl=' + afileurl + '&key=' + key + '&type=' + type + '';
+document.getElementById('hiddenframe').src = apiurl
+var response = {
+     "success": true,
+     "payload": {
+    }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+setTimeout(function(){
+if (document.getElementById('hiddenframe').src = 'https://www.twayobiz.com/file-endpoint?success=true') {
+var response = {
+     "success": true,
+     "payload": {
+    }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+else {
+var response = {
+  "success": false,
+  "payload": {
+
+  },
+  "error": {
+    "code": 400,
+    "message": "An error occurred!"
+  }
+}
+let resp = JSON.stringify(response);
+console.log(resp)
+var bodytxt = document.getElementById('bodytxt');
+bodytxt.text += resp
+}
+}, 4000);
+}
+</script>
+
+<p id="bodytxt">
+</p>
+<iframe id="hiddenframe" style="display: none;"></iframe>
