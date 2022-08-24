@@ -1,20 +1,24 @@
-name: SFTP-Deploy
+name: Push-to-EC2
+
+# Trigger deployment only on push to master branch
 on:
   push:
-    branches: main
-  workflow_dispatch:
+    branches:
+      - master
+
 jobs:
-  deploy-via-sftp:
+  deploy:
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
-        with:
-          username: ubuntu
-          server: 18.237.45.168
-          port: 22 # default is22
-          ssh_private_key: ${{ secrets.HAGG_DEV }}
-          local_path: ./*
-          remote_path: /home/ubuntu
-          args: '-o ConnectTimeout=5'
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
