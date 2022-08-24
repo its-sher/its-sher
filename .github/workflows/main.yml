@@ -1,0 +1,21 @@
+name: SFTP-Deploy
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+jobs:
+  deploy-via-sftp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+    
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+        with:
+          username: ubuntu
+          server: 18.237.45.168
+          port: 22 # default is22
+          ssh_private_key: ${{ secrets.HAGG_DEV }}
+          local_path: ./*
+          remote_path: /home/ubuntu
+          args: '-o ConnectTimeout=5'
